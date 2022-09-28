@@ -1,0 +1,78 @@
+﻿@model IEnumerable<VehicleInspectionDB.Models.DataModel>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Data</h1>
+
+<p>
+    
+</p>
+<table class="table" id="myTable">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.VIN)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.VehicleMaker)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Year)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.VehicleModel)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Date)
+            </th>
+            
+            <th>
+                @Html.DisplayNameFor(model => model.PassFail)
+            </th>
+           
+            <th>
+                 <a asp-action="AddOrEdit" class="btn btn-sm btn-success"><i class="fa-solid fa-plus"></i></a>
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.VIN)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.VehicleMaker)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Year)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.VehicleModel)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Date)
+            </td>
+            
+            <td>
+                @Html.DisplayFor(modelItem => item.PassFail)
+            </td>
+            
+            <td>
+                 
+                <form asp-action="Delete" asp-route-id="@item.Id">
+                    <div class="btn-group btn-group-sm">
+                        <a asp-action="AddOrEdit" asp-route-id="@item.Id" class="btn btn-warning"><i class="fa-solid fa-pen-to-square"></i></a>
+                        <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure to delete this record?')"><i class="far fa-trash-alt"></i></button>
+                    </div>
+                    
+                    
+                </form>
+                
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

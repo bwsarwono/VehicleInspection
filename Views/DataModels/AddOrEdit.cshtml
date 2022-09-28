@@ -1,0 +1,87 @@
+﻿@model VehicleInspectionDB.Models.DataModel
+
+@{
+    ViewData["Title"] = "DataModel";
+}
+
+
+
+<h4>DataModel</h4>
+<hr />
+<div class="row">
+    <div class="col-md-6 offset-md-4">
+        <form asp-action="AddOrEdit" autocomplete="off">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Id" />
+            <!--<input type="hidden" asp-for="Date" />-->
+            <div class="form-group">
+                <label asp-for="VIN" class="control-label"></label>
+                <input asp-for="VIN" class="form-control" />
+                <span asp-validation-for="VIN" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="VehicleMaker" class="control-label"></label>
+                <!--<input asp-for="VehicleMaker" class="form-control" asp-items="new SelectList(ViewBag.VehicleMaker)"/>-->
+                <select asp-for="VehicleMaker" class="form-control" asp-items="new SelectList(ViewBag.VehicleMaker)">
+                    <option value="">Please select the vehicle model</option>
+                </select>
+                <span asp-validation-for="VehicleMaker" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Year" class="control-label"></label>
+                <input asp-for="Year" class="form-control" />
+                <span asp-validation-for="Year" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="VehicleModel" class="control-label"></label>
+                <input asp-for="VehicleModel" class="form-control" />
+                <span asp-validation-for="VehicleModel" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Date" class="control-label"></label>
+                <input asp-for="Date" class="form-control" />
+                <span asp-validation-for="Date" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="InspectorName" class="control-label"></label>
+                <input asp-for="InspectorName" class="form-control" />
+                <span asp-validation-for="InspectorName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="InspectionLocation" class="control-label"></label>
+                <input asp-for="InspectionLocation" class="form-control" />
+                <span asp-validation-for="InspectionLocation" class="text-danger"></span>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="PassFail" /> @Html.DisplayNameFor(model => model.PassFail)
+                </label>
+            </div>
+            <div class="form-group">
+                <label asp-for="Notes" class="control-label"></label>
+                <input asp-for="Notes" class="form-control" />
+                <span asp-validation-for="Notes" class="text-danger"></span>
+            </div>
+            <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <input type="submit" value="Submit" class="btn btn-primary" />
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <a asp-action="Index" class="btn btn-secondary">View All</a>
+                    </div>
+                </div>
+            </form>
+    </div>
+</div>
+
+                
+        
+   
+
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
